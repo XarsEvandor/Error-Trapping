@@ -10,15 +10,15 @@ def trap(type=1, accept_empty=0, upper_lim=None, lower_lim=None):
     user_in = 0
 
     if type == 1:
-        #Error Trapping begins
+        # Error Trapping begins
         trap_bool = False
-        #Accept_empty dictates if the user will be allowed to enter an empty string. Usefull for having enter be a sentinel value.
+        # Accept_empty dictates if the user will be allowed to enter an empty string. Usefull for having enter be a sentinel value.
         if accept_empty:
             while not trap_bool:
                 user_in = input("Input: ")
 
                 if user_in == "":
-                    break
+                    return(user_in)
                 else:
                     try:
                         user_in = int(user_in)
@@ -33,42 +33,69 @@ def trap(type=1, accept_empty=0, upper_lim=None, lower_lim=None):
                 except ValueError:
                     print("Integer required. Please try again.")
 
-        #Checking for margins
+        # Checking for margins
         if not (upper_lim is None and lower_lim is None):
             while True:
                 if upper_lim is not None and user_in < lower_lim:
                     print("Violated lower margin. Please try again")
 
-                    #Added failsafe for especially dense users
+                    # Added failsafe for especially dense users
                     trap_bool = False
-                    while not trap_bool:
-                        try:
-                            user_in = int(input("Input: "))
-                            trap_bool = True
-                        except ValueError:
-                            print("Integer required. Please try again.")
+                    if accept_empty:
+                        while not trap_bool:
+                            user_in = input("Input: ")
+
+                            if user_in == "":
+                                return(user_in)
+                            else:
+                                try:
+                                    user_in = int(user_in)
+                                    trap_bool = True
+                                except ValueError:
+                                    print("Integer required. Please try again.")
+                    else:
+                        while not trap_bool:
+                            try:
+                                user_in = int(input("Input: "))
+                                trap_bool = True
+                            except ValueError:
+                                print("Integer required. Please try again.")
+
                 elif lower_lim is not None and user_in > upper_lim:
                     print("Violated upper margin. Please try again")
 
-                    #Added failsafe for especially dense users
+                    # Added failsafe for especially dense users
                     trap_bool = False
-                    while not trap_bool:
-                        try:
-                            user_in = int(input("Input: "))
-                            trap_bool = True
-                        except ValueError:
-                            print("Integer required. Please try again.")
+                    if accept_empty:
+                        while not trap_bool:
+                            user_in = input("Input: ")
+
+                            if user_in == "":
+                                return(user_in)
+                            else:
+                                try:
+                                    user_in = int(user_in)
+                                    trap_bool = True
+                                except ValueError:
+                                    print("Integer required. Please try again.")
+                    else:
+                        while not trap_bool:
+                            try:
+                                user_in = int(input("Input: "))
+                                trap_bool = True
+                            except ValueError:
+                                print("Integer required. Please try again.")
                 else:
                     break
     elif type == 0:
-        #Error Trapping begins
+        # Error Trapping begins
         trap_bool = False
         if accept_empty:
             while not trap_bool:
                 user_in = input("Input: ")
 
                 if user_in == "":
-                    break
+                    return(user_in)
                 else:
                     try:
                         user_in = float(user_in)
@@ -83,35 +110,61 @@ def trap(type=1, accept_empty=0, upper_lim=None, lower_lim=None):
                 except ValueError:
                     print("Float required. Please try again.")
 
-        #Checking for margins
+        # Checking for margins
         if not (upper_lim is None and lower_lim is None):
             while True:
                 if upper_lim is not None and user_in < lower_lim:
                     print("Violated lower margin. Please try again")
 
-                    #Added failsafe for especially dense users
+                    # Added failsafe for especially dense users
                     trap_bool = False
-                    while not trap_bool:
-                        try:
-                            user_in = float(input("Input: "))
-                            trap_bool = True
-                        except ValueError:
-                            print("Float required. Please try again.")
+                    if accept_empty:
+                        while not trap_bool:
+                            user_in = input("Input: ")
+
+                            if user_in == "":
+                                return(user_in)
+                            else:
+                                try:
+                                    user_in = int(user_in)
+                                    trap_bool = True
+                                except ValueError:
+                                    print("Integer required. Please try again.")
+                    else:
+                        while not trap_bool:
+                            try:
+                                user_in = int(input("Input: "))
+                                trap_bool = True
+                            except ValueError:
+                                print("Integer required. Please try again.")
                 elif lower_lim is not None and user_in > upper_lim:
                     print("Violated upper margin. Please try again")
 
-                    #Added failsafe for especially dense users
+                    # Added failsafe for especially dense users
                     trap_bool = False
-                    while not trap_bool:
-                        try:
-                            user_in = float(input("Input: "))
-                            trap_bool = True
-                        except ValueError:
-                            print("Float required. Please try again.")
+                    if accept_empty:
+                        while not trap_bool:
+                            user_in = input("Input: ")
+
+                            if user_in == "":
+                                return(user_in)
+                            else:
+                                try:
+                                    user_in = int(user_in)
+                                    trap_bool = True
+                                except ValueError:
+                                    print("Integer required. Please try again.")
+                    else:
+                        while not trap_bool:
+                            try:
+                                user_in = int(input("Input: "))
+                                trap_bool = True
+                            except ValueError:
+                                print("Integer required. Please try again.")
                 else:
                     break
     else:
-        #Error Trapping begins
+        # Error Trapping begins
         while True:
             user_in = input("Input (Y/N): ")
 
